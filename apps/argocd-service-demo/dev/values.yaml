@@ -2,7 +2,7 @@ replicaCount: 1
 image:
   repository: ghcr.io/aryzhykau/argocd-service-demo
   pullPolicy: IfNotPresent
-  tag: "sha-c09db4f"
+  tag: "sha-4965d0e"
 ingress:
   enabled: true
   className: "nginx"
