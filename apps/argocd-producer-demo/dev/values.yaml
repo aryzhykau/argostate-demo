@@ -4,7 +4,13 @@ image:
   pullPolicy: IfNotPresent
   tag: "sha-ffc7643"
 ingress:
-  enabled: false
+  enabled: true
+  className: "nginx"
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+  host: argocd-producer-demo.local
+  path: /
+  pathType: Prefix
 resources:
   requests:
     cpu: 50m
