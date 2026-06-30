@@ -1,7 +1,7 @@
 image:
   repository: ghcr.io/aryzhykau/argocd-service-demo
   pullPolicy: IfNotPresent
-  tag: "sha-c09db4f"
+  tag: "sha-4965d0e"
 ingress:
   enabled: true
   className: "nginx"
@@ -34,3 +34,8 @@ keda:
     consumerGroup: "argocd-service-demo"
 autoscaling:
   enabled: false
+
+metrics:
+  enabled: true
+  port: "8080"
+  path: /metrics
