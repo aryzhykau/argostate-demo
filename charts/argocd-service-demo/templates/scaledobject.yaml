@@ -1,0 +1,21 @@
+{{- if .Values.keda.enabled }}
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: {{ include "argocd-service-demo.fullname" . }}
+  labels:
+    {{- include "argocd-service-demo.labels" . | nindent 4 }}
+spec:
+  scaleTargetRef:
+    name: {{ include "argocd-service-demo.fullname" . }}
+  minReplicaCount: {{ .Values.keda.minReplicas }}
+  maxReplicaCount: {{ .Values.keda.maxReplicas }}
+  triggers:
+    - type: kafka
+      metadata:
+        bootstrapServers: {{ .Values.keda.kafka.brokers }}
+        consumerGroup: {{ .Values.keda.kafka.consumerGroup }}
+        topic: {{ .Values.keda.kafka.topic }}
+        lagThreshold: {{ .Values.keda.lagThreshold | quote }}
+        offsetResetPolicy: latest
+{{- end }}

@@ -48,6 +48,16 @@ readinessProbe:
 
 autoscaling:
   enabled: false
+
+keda:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 5
+  lagThreshold: "10"
+  kafka:
+    brokers: ""
+    topic: ""
+    consumerGroup: ""
   minReplicas: 1
   maxReplicas: 3
   targetCPUUtilizationPercentage: 80

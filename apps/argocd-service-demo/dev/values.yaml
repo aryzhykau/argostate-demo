@@ -1,8 +1,10 @@
 replicaCount: 1
+
 image:
   repository: ghcr.io/aryzhykau/argocd-service-demo
   pullPolicy: IfNotPresent
-  tag: "sha-2102ea5"
+  tag: "latest"
+
 ingress:
   enabled: true
   className: "nginx"
@@ -11,6 +13,7 @@ ingress:
   host: argocd-service-demo.local
   path: /
   pathType: Prefix
+
 resources:
   requests:
     cpu: 50m
@@ -18,7 +21,23 @@ resources:
   limits:
     cpu: 200m
     memory: 128Mi
+
 env:
   APP_VERSION: "0.1.0"
+  KAFKA_BROKERS: "demo-cluster-kafka-bootstrap.strimzi.svc.cluster.local:9092"
+  KAFKA_TOPIC: "demo-topic"
+  KAFKA_CONSUMER_GROUP: "argocd-service-demo"
+  PROCESS_DELAY_MS: "200"
+
+keda:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 5
+  lagThreshold: "10"
+  kafka:
+    brokers: "demo-cluster-kafka-bootstrap.strimzi.svc.cluster.local:9092"
+    topic: "demo-topic"
+    consumerGroup: "argocd-service-demo"
+
 autoscaling:
   enabled: false
