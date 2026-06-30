@@ -2,7 +2,7 @@ replicaCount: 1
 image:
   repository: ghcr.io/aryzhykau/argocd-producer-demo
   pullPolicy: IfNotPresent
-  tag: "sha-fabddd0"
+  tag: "sha-ffc7643"
 ingress:
   enabled: false
 resources:
