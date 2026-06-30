@@ -1,10 +1,8 @@
 replicaCount: 1
-
 image:
   repository: ghcr.io/aryzhykau/argocd-service-demo
   pullPolicy: IfNotPresent
-  tag: "latest"
-
+  tag: "sha-2102ea5"
 ingress:
   enabled: true
   className: "nginx"
@@ -13,7 +11,6 @@ ingress:
   host: argocd-service-demo.local
   path: /
   pathType: Prefix
-
 resources:
   requests:
     cpu: 50m
@@ -21,9 +18,7 @@ resources:
   limits:
     cpu: 200m
     memory: 128Mi
-
 env:
   APP_VERSION: "0.1.0"
-
 autoscaling:
   enabled: false
