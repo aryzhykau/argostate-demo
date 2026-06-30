@@ -14,7 +14,7 @@ spec:
     path: charts/argocd-service-demo
     helm:
       valueFiles:
-        - ../../../apps/argocd-producer-demo/dev/values.yaml
+        - /apps/argocd-producer-demo/dev/values.yaml
 
   destination:
     server: https://kubernetes.default.svc
