@@ -1,13 +1,10 @@
 replicaCount: 1
-
 image:
   repository: ghcr.io/aryzhykau/argocd-producer-demo
   pullPolicy: IfNotPresent
-  tag: "latest"
-
+  tag: "sha-fabddd0"
 ingress:
   enabled: false
-
 resources:
   requests:
     cpu: 50m
@@ -15,16 +12,13 @@ resources:
   limits:
     cpu: 200m
     memory: 128Mi
-
 env:
   APP_VERSION: "0.1.0"
   KAFKA_BROKERS: "demo-cluster-kafka-bootstrap.strimzi.svc.cluster.local:9092"
   KAFKA_TOPIC: "demo-topic"
   BURST_SIZE: "50"
   BURST_INTERVAL_SECONDS: "30"
-
 keda:
   enabled: false
-
 autoscaling:
   enabled: false
