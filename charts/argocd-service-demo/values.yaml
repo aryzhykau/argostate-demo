@@ -49,6 +49,11 @@ readinessProbe:
 autoscaling:
   enabled: false
 
+metrics:
+  enabled: true
+  port: "8080"
+  path: /metrics
+
 keda:
   enabled: false
   minReplicas: 1
