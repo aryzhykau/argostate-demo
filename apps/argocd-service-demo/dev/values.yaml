@@ -25,8 +25,8 @@ env:
   PROCESS_DELAY_MS: "200"
 keda:
   enabled: true
-  minReplicas: 3
-  maxReplicas: 9
+  minReplicas: 1
+  maxReplicas: 3
   lagThreshold: "10"
   kafka:
     brokers: "demo-cluster-kafka-bootstrap.strimzi.svc.cluster.local:9092"
